@@ -50,7 +50,7 @@ class Blockchain {
                 return false;
             }      
             
-            // prevents extreme high or low difficulties
+            // prevents malicious (extreme high or low) difficulty jumps
             if (Math.abs(lastDifficulty - difficulty) > 1) {
                 return false;
             }
