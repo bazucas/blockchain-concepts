@@ -1,7 +1,7 @@
 const hexToBinary = require("hex-to-binary");
 const Block = require("./block");
 const { GENESIS_DATA, MINE_RATE } = require("../config");
-const cryptoHash = require("../util/crypto-hash");
+const { cryptoHash } = require("../util");
 
 describe("Block", () => {
     
@@ -70,8 +70,8 @@ describe("Block", () => {
             expect(minedBlock.timestamp).not.toBeUndefined;
         });
 
-        console.log(minedBlock.hash)
-        console.log(cryptoHash(minedBlock.timestamp, lastBlock.nonce, lastBlock.difficulty, lastBlock.hash, data))
+        // console.log(minedBlock.hash)
+        // console.log(cryptoHash(minedBlock.timestamp, lastBlock.nonce, lastBlock.difficulty, lastBlock.hash, data))
 
         it("creates a SHA-256 `hash` based on the proper args", () => {
             expect(minedBlock.hash).toEqual(cryptoHash(minedBlock.timestamp, minedBlock.nonce, minedBlock.difficulty, lastBlock.hash, data));
