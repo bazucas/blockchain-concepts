@@ -11,7 +11,7 @@ describe("Blockchain", () => {
     })
 
     it("contains a `chain` Array instance", () => {
-        expect(blockchain.chain instanceof Array).toBeTruthy;
+        expect(blockchain.chain instanceof Array).toBe(true);
     })
 
     it("starts with the genesis block", () => {
@@ -30,7 +30,7 @@ describe("Blockchain", () => {
             it("returns false", () => {
                blockchain.chain[0] = { data: "fake-genesis-block"};
 
-               expect(Blockchain.isValidChain(blockchain.chain)).toBeFalsy;
+               expect(Blockchain.isValidChain(blockchain.chain)).toBe(false);
             })
         });
 
@@ -47,7 +47,7 @@ describe("Blockchain", () => {
 
                     blockchain.chain[2].lastHash = "broken-hash";
 
-                    expect(Blockchain.isValidChain(blockchain.chain)).toBeFalsy;
+                    expect(Blockchain.isValidChain(blockchain.chain)).toBe(false);
                 })
             });
 
@@ -56,14 +56,14 @@ describe("Blockchain", () => {
 
                     blockchain.chain[2].data = "broken-data";
 
-                    expect(Blockchain.isValidChain(blockchain.chain)).toBeFalsy;
+                    expect(Blockchain.isValidChain(blockchain.chain)).toBe(false);
                 })
             });
 
             describe("and the chain does not contain any invalid blocks", () => {        
                 it("returns true", () => {
 
-                    expect(Blockchain.isValidChain(blockchain.chain)).toBeTruthy;
+                    expect(Blockchain.isValidChain(blockchain.chain)).toBe(true);
                 })
             });
         });
